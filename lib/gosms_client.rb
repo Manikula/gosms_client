@@ -1,4 +1,3 @@
-require 'gosms_client/configuration'
 require 'gosms_client/version'
 require 'gosms_client/oauth2'
 require 'gosms_client/gosms_client'
