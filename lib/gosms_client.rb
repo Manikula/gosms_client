@@ -5,17 +5,4 @@ require 'gosms_client/error'
 require 'gosms_client/message_details'
 
 module GosmsClient
-=begin
-  class << self
-    attr_accessor :configuration
-  end
-
-  def self.configuration
-    @configuration ||= Configuration.new
-  end
-
-  def self.configure
-    yield(configuration)
-  end
-=end
 end

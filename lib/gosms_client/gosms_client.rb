@@ -20,8 +20,8 @@ module GosmsClient
 
     # POST /messages
     def send(text, recipients, testMsg = false)
-      return if invalid_params text, recipients
-      json = prepare_json text, recipients
+      return if invalid_params? text, recipients
+      json = prepare_msg_json text, recipients
       begin
         response = token.post(testMsg ? TEST : MSG, body: json, headers: { 'Content-Type' => 'application/json' })
         details = MessageDetails.new(response.parsed)
@@ -37,11 +37,11 @@ module GosmsClient
 
     private
 
-    def invalid_params(text,recipients)
+    def invalid_params?(text,recipients)
       return text.nil? || recipients.nil? || is_text_long?(text)
     end
 
-    def prepare_json text, recipients
+    def prepare_msg_json text, recipients
       {
         message: text,
         recipients: recipients,
@@ -58,7 +58,7 @@ module GosmsClient
         begin
           @token = oauth_client.client_credentials.get_token
         rescue OAuth2::Error => e
-          raise Error.new(:bad_token, 'Error while getting token')
+          raise Error.new(:bad_token, e.response.parsed)
         end
       end
       @token
