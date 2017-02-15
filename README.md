@@ -48,7 +48,7 @@ Sending sms doesn't wait for delivery of message and just tells you, where to fi
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment. You can create `.env` file with Gosms credentials in project root and `bin/console` will load them.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
