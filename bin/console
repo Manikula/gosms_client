@@ -12,7 +12,13 @@ require "gosms_client"
 
 require "irb"
 require "byebug"
+require 'dotenv'
+Dotenv.load
 
-@c = GosmsClient::Client.new(1,2,3)
+client_id = ENV['client_id']
+client_secret = ENV['client_secret']
+channel_id = ENV['channel_id']
+
+@c = GosmsClient::Client.new(client_id,client_secret,channel_id)
 
 IRB.start
